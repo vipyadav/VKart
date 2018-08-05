@@ -53,5 +53,13 @@ namespace VKart.Controllers
 
             return Content($"PageIndex = {pageIndex}, sortBy = {sortBy}");
         }
+
+        public ActionResult ByReleaseDate(int year, byte month)
+        {
+
+            return Content($"{year}/{month}");
+        }
+
+        
     }
 }
