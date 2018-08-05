@@ -14,6 +14,12 @@ namespace VKart.Controllers
                 Name = "The White Tiger!"
             };
 
+            ViewData["Book"] = book;
+
+            ViewBag.Book = book;
+
+            return View();
+
             //return View(book);
 
             //return Content("Hello World!");
@@ -34,7 +40,7 @@ namespace VKart.Controllers
             //byte[] fileBytes = System.IO.File.ReadAllBytes(Server.MapPath("~/Assets/Files/testFile.txt"));
             //return File(fileBytes, "text/plain");
 
-            return Redirect("http://vipinkumaryadav.com/");
+            //return Redirect("http://vipinkumaryadav.com/");
         }
 
         public ActionResult Edit(int bookId)
