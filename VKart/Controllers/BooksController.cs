@@ -60,6 +60,13 @@ namespace VKart.Controllers
             return Content($"{year}/{month}");
         }
 
-        
+        [Route("books/authors/{author:minlength(3)}")]
+        public ActionResult ByAuthors(string author)
+        {
+
+            return Content($"Author Name = {author}");
+        }
+
+       
     }
 }

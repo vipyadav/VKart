@@ -13,6 +13,8 @@ namespace VKart
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 "BooksByReleasedDate",
                 "books/released/{year}/{month}",
