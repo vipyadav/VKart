@@ -1,6 +1,8 @@
 ﻿
+using System.Collections.Generic;
 using System.Web.Mvc;
 using VKart.Models;
+using VKart.ViewModels;
 
 namespace VKart.Controllers
 {
@@ -14,11 +16,25 @@ namespace VKart.Controllers
                 Name = "The White Tiger!"
             };
 
-            ViewData["Book"] = book;
+            var customers = new List<Customer>
+            {
+                new Customer{Name = "Customer 1"},
+                 new Customer{Name = "Customer 2"},
+            };
 
-            ViewBag.Book = book;
+            var viewModel = new RandomBookViewModel
+            {
+                Book = book,
+                Customers = customers
+            };
 
-            return View();
+            return View(viewModel);
+
+            //ViewData["Book"] = book;
+
+            //ViewBag.Book = book;
+
+            //return View();
 
             //return View(book);
 
