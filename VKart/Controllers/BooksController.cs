@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 using System.Web.Mvc;
 using VKart.Models;
 
@@ -38,6 +35,23 @@ namespace VKart.Controllers
             //return File(fileBytes, "text/plain");
 
             return Redirect("http://vipinkumaryadav.com/");
+        }
+
+        public ActionResult Edit(int bookId)
+        {
+            return Content($"Id = {bookId}");
+        }
+
+        //Books
+        public ActionResult Index(int? pageIndex, string sortBy)
+        {
+            if (!pageIndex.HasValue)
+                pageIndex = 1;
+
+            if (string.IsNullOrEmpty(sortBy))
+                sortBy = "Name";
+
+            return Content($"PageIndex = {pageIndex}, sortBy = {sortBy}");
         }
     }
 }
