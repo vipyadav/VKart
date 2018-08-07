@@ -27,7 +27,7 @@ namespace VKart.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = _DbContext.Customers.ToList(); //EF will not query to DB here. It will execute when we iterate it in View
+            var customers = _DbContext.Customers.Include(x => x.MembershipType).ToList(); //EF will not query to DB here. It will execute when we iterate it in View
 
             return View(customers);
         }
