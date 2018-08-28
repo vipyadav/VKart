@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKart", "VKart\VKart.csproj", "{67E2AEA9-962C-48FF-A194-B3DCA74BD8F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKart.Tests", "VKart.Tests\VKart.Tests.csproj", "{A2F27F14-E0E0-4247-A8A2-9E41A6DD7976}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67E2AEA9-962C-48FF-A194-B3DCA74BD8F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67E2AEA9-962C-48FF-A194-B3DCA74BD8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67E2AEA9-962C-48FF-A194-B3DCA74BD8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67E2AEA9-962C-48FF-A194-B3DCA74BD8F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2F27F14-E0E0-4247-A8A2-9E41A6DD7976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2F27F14-E0E0-4247-A8A2-9E41A6DD7976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2F27F14-E0E0-4247-A8A2-9E41A6DD7976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2F27F14-E0E0-4247-A8A2-9E41A6DD7976}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {401E869B-14B4-4145-A4E5-2B75B81D81A0}
+	EndGlobalSection
+EndGlobal
