@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using VKart.Models;
 using System.Data.Entity;
-
+using VKart.ViewModels;
 
 namespace VKart.Controllers
 {
@@ -40,6 +40,27 @@ namespace VKart.Controllers
                 return HttpNotFound();
 
             return View(customer);
+        }
+
+        public ActionResult New()
+        {
+            var membershiptypes = _DbContext.MembershipTypes.ToList();
+
+            var viewModel = new CustomerViewModel
+                            {
+                                MembershipTypes = membershiptypes
+                             };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Create(CustomerViewModel customerViewModel)
+        {
+            _DbContext.Customers.Add(customerViewModel.Customer);
+            _DbContext.SaveChanges();
+
+            return RedirectToAction("Index","Customers");
         }
     }
 }

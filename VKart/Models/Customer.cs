@@ -18,6 +18,7 @@ namespace VKart.Models
 
         public MembershipType MembershipType { get; set; }
 
+        [Display(Name ="Membership Type")]
         public byte MemberShipTypeId { get; set; } // EF will recognize it as Foreign Key
     }
 }
