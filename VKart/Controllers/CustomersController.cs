@@ -57,6 +57,17 @@ namespace VKart.Controllers
         [HttpPost]
         public ActionResult SaveOrUpdate(CustomerViewModel customerViewModel)
         {
+            if(!ModelState.IsValid)
+            {
+                var viewModel = new CustomerViewModel
+                {
+                    Customer = customerViewModel.Customer,
+                    MembershipTypes = _DbContext.MembershipTypes.ToList()
+                };
+
+                return View("New",viewModel);
+            }
+
             if (customerViewModel.Customer.Id == 0)
                 _DbContext.Customers.Add(customerViewModel.Customer);
             else
