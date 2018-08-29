@@ -47,20 +47,46 @@ namespace VKart.Controllers
             var membershiptypes = _DbContext.MembershipTypes.ToList();
 
             var viewModel = new CustomerViewModel
-                            {
-                                MembershipTypes = membershiptypes
-                             };
+            {
+                MembershipTypes = membershiptypes
+            };
 
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Create(CustomerViewModel customerViewModel)
+        public ActionResult SaveOrUpdate(CustomerViewModel customerViewModel)
         {
-            _DbContext.Customers.Add(customerViewModel.Customer);
+            if (customerViewModel.Customer.Id == 0)
+                _DbContext.Customers.Add(customerViewModel.Customer);
+            else
+            {
+                var customerInDb = _DbContext.Customers.SingleOrDefault(x => x.Id == customerViewModel.Customer.Id);
+
+                customerInDb.Name = customerViewModel.Customer.Name;
+                customerInDb.MemberShipTypeId = customerViewModel.Customer.MemberShipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customerViewModel.Customer.IsSubscribedToNewsletter;
+
+            }
             _DbContext.SaveChanges();
 
-            return RedirectToAction("Index","Customers");
+            return RedirectToAction("Index", "Customers");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _DbContext.Customers.SingleOrDefault(x => x.Id == id);
+
+            if (customer == null)
+                return HttpNotFound();
+
+            var viewModel = new CustomerViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _DbContext.MembershipTypes.ToList()
+            };
+
+            return View("New", viewModel);
         }
     }
 }
