@@ -24,7 +24,7 @@ namespace VKart
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-litera.css",
-                      
+                      "~/Content/font-awesome.min.css",
                       "~/Content/site.css"));
         }
     }

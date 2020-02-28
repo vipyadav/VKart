@@ -1,31 +1,71 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "vKart Shopping";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="jumbotron text-center bg-transparent">
+    <h1>Welcome to vKart</h1>
+    <P class="lead">Your Shopping Site</P>
+
+    <div class="mx-2">
+        <a href="#"><i class="fa fa-apple"></i> App Store</a>
+        <a href="#"><i class="fa fa-play"></i> Google Play</a>
+        <a href="#"><i class="fa fa-windows"></i> windows</a>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-md-6">
+        <div class="border border-light p-5">
+            <a class="navbar-brand" href="#">vKart</a>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
+
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="col-md-6">
+        <form class="border border-light p-5">
+
+            <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+            <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+
+            <div class="d-flex justify-content-between">
+                <div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                        <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                    </div>
+                </div>
+                <div>
+                    <a href="">Forgot password?</a>
+                </div>
+            </div>
+
+            <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+            <div class="text-center">
+                <p>
+                    Not a member?
+                    <a href="">Register</a>
+                </p>
+
+                <p>or sign in with:</p>
+                <a class="light-blue-text mx-2">
+                    <i class="fa fa-facebook-f"></i>
+                </a>
+                <a class="light-blue-text mx-2">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="light-blue-text mx-2">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+                <a class="light-blue-text mx-2">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+        </form>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
 </div>
