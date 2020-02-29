@@ -1,0 +1,123 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ignite UI igGrid Features: Selection</title>
+    <!-- Ignite UI Required Combined CSS Files -->
+    <!-- <link href="http://cdn-na.infragistics.com/igniteui/2019.2/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" /> -->
+    <link href="http://cdn-na.infragistics.com/igniteui/2019.2/latest/css/themes/bootstrap3/superhero/infragistics.theme.css" rel="stylesheet" />
+    <link href="http://cdn-na.infragistics.com/igniteui/2019.2/latest/css/structure/infragistics.css" rel="stylesheet" />
+
+    <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+    <!-- Ignite UI Required Combined JavaScript Files -->
+    <script src="http://cdn-na.infragistics.com/igniteui/2019.2/latest/js/infragistics.core.js"></script>
+    <script src="http://cdn-na.infragistics.com/igniteui/2019.2/latest/js/infragistics.lob.js"></script>
+    <script src="http://cdn-na.infragistics.com/igniteui/2019.2/latest/js/infragistics.loader.js"></script>
+
+    <!-- Used to add modal loading indicator for igGrid -->
+    <script src="https://www.igniteui.com/js/grid-modal-loading-inicator.js"></script>
+
+    <style type="text/css">
+        input.button-style {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="dataGrid">
+        <!-- this is where grid will be initialized. -->
+    </div>
+
+    <script>
+
+        var grid = null;
+
+        (function ($) {
+            $.ajax({
+                url: "/InfragisticsGrid/GetEmployees/",
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    debugger;
+                    //initialize the grid
+                    grid = $('#dataGrid')
+                        .igGrid({
+                            width: '100%',
+                            columns: [
+                                { headerText: "ID", key: "ID", dataType: "number", width: "15%", hidden: false },
+                                { headerText: "Name", key: "Name", dataType: "string", width: "15%", hidden: false },
+                                { headerText: "Date of birth", key: "Birthdate", dataType: "date", width: "20%", hidden: false },
+                                { headerText: "IsTemporary", key: "IsTemporary", dataType: "bool", width: "15%", hidden: true },
+                                { headerText: "Department ID", key: "Dept_id", dataType: "number", width: "15%", hidden: false },
+                            ],
+                            autofitLastColumn: false,
+                            autoGenerateColumns: false,
+                            dataSource: data,
+                            responseDataKey: "results",
+                            primaryKey: "ID",
+                            autoCommit: true,
+                            features: [
+
+                                {
+                                    name: "Updating",
+                                    enableAddRow: true,
+                                    enableDeleteRow: true,
+                                    enableUpdateRow: true,
+                                    generatePrimaryKeyValue: function (evt, ui) {
+                                        ui.value = getTempKey();
+                                    },
+                                    columnSettings: [{
+                                        columnKey: "ID",
+                                        editorOptions: { readOnly: true }
+                                    }]
+                                    //                   .UpdateUrl(Url.Action("SaveData"))
+                                    //.DataBind()
+                                    //.Render()
+                                }
+                            ]
+                        });
+                }
+            })
+
+        })(jQuery);
+        function getTempKey() {
+            var key;
+            key = 1;
+            //This function gets the appropriate temporary key for a new row from the server
+            return key;
+        }
+
+    
+    </script>
+
+    <input type="button" id="saveChanges" value="Save Changes" />
+
+    <script type="text/javascript">
+      
+        $("#saveChanges").on("click", function () {
+
+            var gridTransactions = grid.igGrid("transactionsAsString");
+
+            var opts = {
+                type: "POST",
+                url: "@Url.Action("SaveData")",
+                data: { "ig_transactions": gridTransactions },
+                success: function (returnData, textStatus, jqXHR) {
+                    //clear transaction log on success
+                   // grid.igGrid("allTransactions").clear();
+                    $("#dataGrid").igGrid("dataSourceObject", returnData).igGrid("dataBind");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                }
+            };
+            $.ajax(opts);
+        });
+
+    </script>
+</body>
+</html>

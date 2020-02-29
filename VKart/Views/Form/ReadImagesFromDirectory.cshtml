@@ -1,0 +1,48 @@
+﻿@using VKart.Models
+
+@model IEnumerable<FileDetails>
+
+@{
+    ViewBag.Title = "Gallery";
+}
+    <div class="container">
+        <div class=" row header">
+            <p>List all the Images of the Upload Folder</p>
+        </div>
+        <div class="row">
+            @{
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>File Name</th>
+                            <th>Image</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (FileDetails item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td><img src="@item.Path" style="max-height: 300px;max-width:800px"></td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+            }
+        </div>
+    </div>
+
+    <style>
+        
+        .header {
+            
+            text-align: center;
+             font-family: Arial;
+            color: blueviolet;
+            font-size: 30px;
+        }
+
+    </style>
